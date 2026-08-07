@@ -27,7 +27,7 @@ const team = [
     tag: "DATABASE",
     photo: "/team/verity.jpg",
     blurb:
-      "Keeps the backend roadmap honest — tracking tickets, timelines, and making sure the pieces land in the right order.",
+      "N/A",
   },
   {
     no: "002",
@@ -36,7 +36,7 @@ const team = [
     tag: "INTERFACE",
     photo: "/team/aurora.jpg",
     blurb:
-      "Shapes what the archive looks and feels like to use — the screens, the search, the everyday experience of the whole system.",
+      "N/A",
   },
   {
     no: "003",
@@ -45,7 +45,7 @@ const team = [
     tag: "SERVICES",
     photo: "/team/dylan.jpg",
     blurb:
-      "Builds and maintains the services that keep the archive running underneath everything else — data access, reports, the stuff nobody sees until it breaks.",
+      "N/A",
   },
   {
     no: "004",
@@ -54,7 +54,7 @@ const team = [
     tag: "CLOUD / AI",
     photo: "/team/jenna.jpg",
     blurb:
-      "Designs how the whole system talks to itself and to Azure — routing, infrastructure, and where AI fits into the archive's future.",
+      "N/A",
   },
 ];
 
