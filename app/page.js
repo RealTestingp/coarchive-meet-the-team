@@ -1,20 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { Fraunces, JetBrains_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import styles from "./page.module.css";
 
-const fraunces = Fraunces({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  style: ["normal", "italic"],
-  variable: "--font-display",
-});
-
-const mono = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-mono",
+  weight: ["400", "600"],
+  variable: "--font-sans",
 });
 
 // Edit this array with real bios / achievements whenever you're ready.
@@ -22,8 +15,7 @@ const mono = JetBrains_Mono({
 // (square images, ~800x800, work best).
 //
 // `bio` is optional — if set, a "Read more" toggle appears under the
-// short blurb to reveal it. `linkedin` is a placeholder "#" until you
-// have each person's real URL; swap it in whenever it's ready.
+// short blurb to reveal it.
 const team = [
   {
     no: "001",
@@ -32,7 +24,7 @@ const team = [
     tag: "PROJECT MGMT / DATABASE",
     photo: "/team/verity_pf.png",
     blurb:
-      "Keeps the backend roadmap honest — tracking tickets, timelines, and making sure the pieces land in the right order.",
+      "I’m a software developer graduating from SAIT in August 2026, transitioning into tech after building a career across financial services, non‑profit arts, and client‑experience roles. That path shaped how I work today: with strong communication, collaboration, time‑management, and stakeholder‑focused problem‑solving at the core.",
     linkedin: "https://www.linkedin.com/in/verityb/",
   },
   {
@@ -42,7 +34,7 @@ const team = [
     tag: "INTERFACE",
     photo: "/team/aurora.jpg",
     blurb:
-      "Shapes what the archive looks and feels like to use — the screens, the search, the everyday experience of the whole system.",
+      "N/A",
     linkedin: "https://www.linkedin.com/in/aurora-choban-818a2334a/",
   },
   {
@@ -52,7 +44,7 @@ const team = [
     tag: "SERVICES",
     photo: "/team/dylan_pf.jpg",
     blurb:
-      "Builds and maintains the services that keep the archive running underneath everything else — data access, reports, the stuff nobody sees until it breaks.",
+      "N/A",
     linkedin: "https://www.linkedin.com/in/dylan-khuu/",
   },
   {
@@ -62,7 +54,7 @@ const team = [
     tag: "CLOUD / AI",
     photo: "/team/jenna_pf.jpg",
     blurb:
-      "Designs how the whole system talks to itself and to Azure — routing, infrastructure, and where AI fits into the archive's future.",
+      "N/A",
     linkedin: "https://www.linkedin.com/in/jenna-hackett-673981161/",
   },
 ];
@@ -72,11 +64,6 @@ function TeamCard({ member }) {
 
   return (
     <article className={styles.card}>
-      <div className={styles.tab}>
-        <span className={styles.tabNo}>NO. {member.no}</span>
-        <span className={styles.tabTag}>{member.tag}</span>
-      </div>
-
       <div className={styles.photoFrame}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -96,9 +83,8 @@ function TeamCard({ member }) {
         </div>
       </div>
 
-      <div className={styles.perforation} aria-hidden="true" />
-
       <div className={styles.cardBody}>
+        <span className={styles.tag}>{member.tag}</span>
         <h2 className={styles.name}>{member.name}</h2>
         <p className={styles.role}>{member.role}</p>
         <p className={styles.blurb}>{member.blurb}</p>
@@ -139,9 +125,7 @@ function TeamCard({ member }) {
 
 export default function Page() {
   return (
-    <main className={`${styles.page} ${fraunces.variable} ${mono.variable}`}>
-      <div className={styles.spotlight} aria-hidden="true" />
-
+    <main className={`${styles.page} ${inter.variable}`}>
       <header className={styles.hero}>
         <p className={styles.eyebrow}>GO&ndash;GITTERS</p>
         <h1 className={styles.title}>
