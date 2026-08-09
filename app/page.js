@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Inter } from "next/font/google";
 import styles from "./page.module.css";
 
@@ -14,8 +14,7 @@ const inter = Inter({
 // Drop matching photos into /public/team/ using the filenames below
 // (square images, ~800x800, work best).
 //
-// `bio` is optional — if set, a "Read more" toggle appears under the
-// short blurb to reveal it.
+// `website` is optional — if set, an extra link shows next to LinkedIn.
 const team = [
   {
     no: "001",
@@ -24,8 +23,11 @@ const team = [
     tag: "PROJECT MGMT / DATABASE",
     photo: "/team/verity_pf.png",
     blurb:
-      "I’m a software developer graduating from SAIT in August 2026, transitioning into tech after building a career across financial services, non‑profit arts, and client‑experience roles. That path shaped how I work today: with strong communication, collaboration, time‑management, and stakeholder‑focused problem‑solving at the core.",
+      "Kept the backend roadmap honest, tracking tickets, timelines, and making sure the pieces landed in the right order.",
+    bio:
+      "I'm a software developer graduating from SAIT in August 2026, transitioning into tech after building a career across financial services, non-profit arts, and client-experience roles. That path shaped how I work today: with strong communication, collaboration, time-management, and stakeholder-focused problem-solving at the core.\n\nIn development, I bring solid technical fundamentals in object-oriented programming, front and backend development, relational databases, SQL, cloud computing, DevOps practices, IoT concepts, and modern AI workflows — including responsible AI and agentic AI. I'm especially interested in enterprise applications and building solutions that improve reliability, clarity, and the human experience overall.\n\nCurious, adaptable, and detail-driven, I'm excited to grow my career in environments where technology, teamwork, and thoughtful design come together to create meaningful impact.",
     linkedin: "https://www.linkedin.com/in/verityb/",
+    website: "https://verityboyd.vercel.app/",
   },
   {
     no: "002",
@@ -34,8 +36,9 @@ const team = [
     tag: "INTERFACE",
     photo: "/team/aurora.jpg",
     blurb:
-      "N/A",
+      "Shaped what the archive looked and felt like for users, from the screens and search functionality to the overall day-to-day experience of the archive.",
     linkedin: "https://www.linkedin.com/in/aurora-choban-818a2334a/",
+    website: null,
   },
   {
     no: "003",
@@ -44,8 +47,9 @@ const team = [
     tag: "SERVICES",
     photo: "/team/dylan_pf.jpg",
     blurb:
-      "N/A",
+      "Developed the gateway and Reports Service, implementing the necessary models, controllers, DTOs, and supporting backend components.",
     linkedin: "https://www.linkedin.com/in/dylan-khuu/",
+    website: null,
   },
   {
     no: "004",
@@ -54,33 +58,44 @@ const team = [
     tag: "CLOUD / AI",
     photo: "/team/jenna_pf.jpg",
     blurb:
-      "N/A",
+      "Designed how the system communicated internally and with Azure, covering routing, infrastructure, and AI service.",
     linkedin: "https://www.linkedin.com/in/jenna-hackett-673981161/",
+    website: null,
   },
 ];
 
-function TeamCard({ member }) {
-  const [expanded, setExpanded] = useState(false);
+function MemberPhoto({ member, className, fallbackClassName }) {
+  return (
+    <>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={member.photo}
+        alt={member.name}
+        className={className}
+        onError={(e) => {
+          e.currentTarget.style.display = "none";
+          e.currentTarget.nextSibling.style.display = "flex";
+        }}
+      />
+      <div className={fallbackClassName}>
+        {member.name
+          .split(" ")
+          .map((w) => w[0])
+          .join("")}
+      </div>
+    </>
+  );
+}
 
+function TeamCard({ member, onOpen }) {
   return (
     <article className={styles.card}>
       <div className={styles.photoFrame}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={member.photo}
-          alt={member.name}
+        <MemberPhoto
+          member={member}
           className={styles.photo}
-          onError={(e) => {
-            e.currentTarget.style.display = "none";
-            e.currentTarget.nextSibling.style.display = "flex";
-          }}
+          fallbackClassName={styles.photoFallback}
         />
-        <div className={styles.photoFallback}>
-          {member.name
-            .split(" ")
-            .map((w) => w[0])
-            .join("")}
-        </div>
       </div>
 
       <div className={styles.cardBody}>
@@ -89,41 +104,130 @@ function TeamCard({ member }) {
         <p className={styles.role}>{member.role}</p>
         <p className={styles.blurb}>{member.blurb}</p>
 
-        {expanded && member.bio && (
-          <div className={styles.bio}>
-            {member.bio.split("\n\n").map((para, i) => (
-              <p key={i}>{para}</p>
-            ))}
-          </div>
-        )}
+        <button
+          type="button"
+          className={styles.readMore}
+          onClick={() => onOpen(member)}
+        >
+          More about {member.name.split(" ")[0]} ↗
+        </button>
 
         <div className={styles.cardFooter}>
-          {member.bio && (
-            <button
-              type="button"
-              className={styles.readMore}
-              onClick={() => setExpanded((v) => !v)}
-              aria-expanded={expanded}
-            >
-              {expanded ? "Read less" : "Read more"}
-            </button>
-          )}
-
           <a
             href={member.linkedin}
             target="_blank"
             rel="noopener noreferrer"
             className={styles.linkedin}
+            onClick={(e) => e.stopPropagation()}
           >
             LinkedIn ↗
           </a>
+
+          {member.website && (
+            <a
+              href={member.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.linkedin}
+              onClick={(e) => e.stopPropagation()}
+            >
+              Website ↗
+            </a>
+          )}
         </div>
       </div>
     </article>
   );
 }
 
+function MemberModal({ member, onClose }) {
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    const onKeyDown = (e) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [onClose]);
+
+  return (
+    <div
+      className={styles.modalBackdrop}
+      onClick={onClose}
+      role="presentation"
+    >
+      <div
+        className={styles.modal}
+        role="dialog"
+        aria-modal="true"
+        aria-label={member.name}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          type="button"
+          className={styles.modalClose}
+          onClick={onClose}
+          aria-label="Close"
+        >
+          ✕
+        </button>
+
+        <div className={styles.modalPhotoFrame}>
+          <MemberPhoto
+            member={member}
+            className={styles.modalPhoto}
+            fallbackClassName={styles.modalPhotoFallback}
+          />
+        </div>
+
+        <div className={styles.modalBody}>
+          <span className={styles.tag}>{member.tag}</span>
+          <h2 className={styles.modalName}>{member.name}</h2>
+          <p className={styles.role}>{member.role}</p>
+
+          {member.bio ? (
+            <div className={styles.modalBio}>
+              {member.bio.split("\n\n").map((para, i) => (
+                <p key={i}>{para}</p>
+              ))}
+            </div>
+          ) : (
+            <p className={styles.modalBlurb}>{member.blurb}</p>
+          )}
+
+          <div className={styles.cardFooter}>
+            <a
+              href={member.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.linkedin}
+            >
+              LinkedIn ↗
+            </a>
+
+            {member.website && (
+              <a
+                href={member.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.linkedin}
+              >
+                Website ↗
+              </a>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Page() {
+  const [activeMember, setActiveMember] = useState(null);
+
   return (
     <main className={`${styles.page} ${inter.variable}`}>
       <header className={styles.hero}>
@@ -136,7 +240,7 @@ export default function Page() {
 
       <section className={styles.grid} aria-label="Team members">
         {team.map((member) => (
-          <TeamCard key={member.no} member={member} />
+          <TeamCard key={member.no} member={member} onOpen={setActiveMember} />
         ))}
       </section>
 
@@ -144,6 +248,10 @@ export default function Page() {
         <p>Calgary Opera Interactive Archive</p>
         <p>Developed by Team Go&mdash;Gitters</p>
       </footer>
+
+      {activeMember && (
+        <MemberModal member={activeMember} onClose={() => setActiveMember(null)} />
+      )}
     </main>
   );
 }
