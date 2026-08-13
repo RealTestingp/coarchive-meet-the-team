@@ -62,9 +62,9 @@ const team = [
     tag: "CLOUD / AI",
     photo: "/team/jenna_pf.jpg",
     blurb:
-      "Designed how the system communicated internally and with Azure, covering routing, infrastructure, and AI service.",
+      "Designed and built the infrastructure backbone — containerization, deployment, and the AI assistant that brings the archive to life.",
     bio:
-      "Designed how the system communicated internally and with Azure, covering routing, infrastructure, and AI service.",
+      "Designed and built the infrastructure backbone, containerization, deployment, and the AI assistant that brings the archive to life.\n\nI'm a software developer graduating from SAIT in August 2026, transitioning into tech after building a career in banking, following a background in the service industry. That path shaped how I approach problems today: with strong client-facing communication, attention to detail under pressure, and a practical sense of how systems need to actually work for the people using them.\n\nIn development, I bring solid technical fundamentals in cloud computing on Azure, containerization with Docker, microservices architecture, DevOps and CI/CD practices, relational databases, and applied AI including retrieval-augmented generation and agentic workflows.\n\nOn the Calgary Opera Archive I served as Cloud and AI Architect, designing and containerizing all five microservices and deploying the system to Azure Container Apps. I built the RAG-powered AI assistant end to end, from Azure AI Search indexing and retrieval tuning to guardrails and Azure AI Foundry agent configuration, so archive staff can ask natural-language questions and get accurate answers grounded in the archive's own data. I also managed the project's cloud infrastructure and cost footprint throughout development.\n\nMy specialization is cloud infrastructure and applied AI, with a particular interest in building systems that are secure, cost-conscious, and genuinely usable, not just technically impressive. I'm looking to join a team where infrastructure is treated as a first-class part of the product, not an afterthought.",
     linkedin: "https://www.linkedin.com/in/jenna-hackett-673981161/",
     website: null,
   },
