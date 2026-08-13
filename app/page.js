@@ -20,12 +20,12 @@ const team = [
     no: "001",
     name: "Verity Boyd",
     role: "Project Manager, Backend Developer",
-    tag: "PROJECT MGMT / DATABASE",
+    tag: "DATABASE",
     photo: "/team/verity_pf.png",
     blurb:
       "Kept the backend roadmap honest, tracking tickets, timelines, and making sure the pieces landed in the right order.",
     bio:
-      "I'm a software developer graduating from SAIT in August 2026, transitioning into tech after building a career across financial services, non-profit arts, and client-experience roles. That path shaped how I work today: with strong communication, collaboration, time-management, and stakeholder-focused problem-solving at the core.\n\nIn development, I bring solid technical fundamentals in object-oriented programming, front and backend development, relational databases, SQL, cloud computing, DevOps practices, IoT concepts, and modern AI workflows — including responsible AI and agentic AI. I'm especially interested in enterprise applications and building solutions that improve reliability, clarity, and the human experience overall.\n\nCurious, adaptable, and detail-driven, I'm excited to grow my career in environments where technology, teamwork, and thoughtful design come together to create meaningful impact.",
+      "Kept the backend roadmap honest, tracking tickets, timelines, and making sure the pieces landed in the right order.\n\nI'm a software developer graduating from SAIT in August 2026, transitioning into tech after building a career across financial services, non-profit arts, and client-experience roles. That path shaped how I work today: with strong communication, collaboration, time-management, and stakeholder-focused problem-solving at the core.\n\nIn development, I bring solid technical fundamentals in object-oriented programming, front and backend development, relational databases, SQL, cloud computing, DevOps practices, IoT concepts, and modern AI workflows — including responsible AI and agentic AI. I'm especially interested in enterprise applications and building solutions that improve reliability, clarity, and the human experience overall.\n\nCurious, adaptable, and detail-driven, I'm excited to grow my career in environments where technology, teamwork, and thoughtful design come together to create meaningful impact.",
     linkedin: "https://www.linkedin.com/in/verityb/",
     website: "https://verityboyd.vercel.app/",
   },
@@ -34,9 +34,11 @@ const team = [
     name: "Aurora Choban",
     role: "Frontend Developer",
     tag: "INTERFACE",
-    photo: "/team/aurora.jpg",
+    photo: "/team/aurora_pf.png",
     blurb:
       "Shaped what the archive looked and felt like for users, from the screens and search functionality to the overall day-to-day experience of the archive.",
+    bio:
+      "Shaped what the archive looked and felt like for users, from the screens and search functionality to the overall day-to-day experience of the archive.\n\nI'm a software developer graduating from SAIT in August 2026, transitioning into tech after building a career in insurance. That work developed the strengths I rely on now: precision with complex information, clear communication with clients and stakeholders, and the judgment to translate detailed requirements into something people can act on with confidence.\n\nIn development, I bring solid technical fundamentals in object-oriented programming, front and backend development, relational databases and SQL, cloud computing on Azure, containerization with Docker, DevOps practices, version control and agile delivery, and modern AI workflows including retrieval-augmented generation.\n\nOn the Calgary Opera Archive I served as frontend developer, building the client in React and TypeScript with a full design system, dark mode support, and a multi-step production wizard that makes a complex data model straightforward for archive staff. I worked across a local environment spanning a .NET API and a SQL Server container, which allows me to read backend code, trace issues across layers, and collaborate effectively with the developers who own them.\n\nMy specialization is frontend development, with a growing focus on integrating AI capabilities such as search, summarization, and natural-language assistance into user-facing applications. I'm detail-driven, comfortable owning a feature end to end, and looking to join a team where interface quality is treated as core engineering.",
     linkedin: "https://www.linkedin.com/in/aurora-choban-818a2334a/",
     website: null,
   },
@@ -48,6 +50,8 @@ const team = [
     photo: "/team/dylan_pf.jpg",
     blurb:
       "Developed the gateway and Reports Service, implementing the necessary models, controllers, DTOs, and supporting backend components.",
+    bio:
+      "Developed the gateway and Reports Service, implementing the necessary models, controllers, DTOs, and supporting backend components.",
     linkedin: "https://www.linkedin.com/in/dylan-khuu/",
     website: null,
   },
@@ -58,6 +62,8 @@ const team = [
     tag: "CLOUD / AI",
     photo: "/team/jenna_pf.jpg",
     blurb:
+      "Designed how the system communicated internally and with Azure, covering routing, infrastructure, and AI service.",
+    bio:
       "Designed how the system communicated internally and with Azure, covering routing, infrastructure, and AI service.",
     linkedin: "https://www.linkedin.com/in/jenna-hackett-673981161/",
     website: null,
