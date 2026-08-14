@@ -51,7 +51,7 @@ const team = [
     blurb:
       "Developed the gateway and Reports Service, implementing the necessary models, controllers, DTOs, and supporting backend components.",
     bio:
-      "Developed the gateway and Reports Service, implementing the necessary models, controllers, DTOs, and supporting backend components.",
+      "Developed the gateway and Reports Service, implementing the necessary models, controllers, DTOs, and supporting backend components.\n\nI'm completing a Software Development Diploma at SAIT, where I've built full-stack applications using C#, Python, React, and SQL, including the Calgary Opera Interactive Archive itself, a web-based archival system supporting the digital transformation of historical organizational records.\n\nOn this project, I worked on the overall backend architecture, built the API gateway that routes requests across services, and developed the Reports Service, which handles the models, controllers, and DTOs behind generating and exporting reports from the archive's data.\n\nBefore moving into development, I worked in accounting and financial operations, which gave me a solid grounding in accuracy, process, and translating real-world business requirements into technical solutions, which is something I now bring directly into how I approach backend and system design.",
     linkedin: "https://www.linkedin.com/in/dylan-khuu/",
     website: null,
   },
